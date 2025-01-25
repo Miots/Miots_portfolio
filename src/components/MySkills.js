@@ -1,114 +1,107 @@
-// src/components/MySkills.js
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React from "react"
+import { motion } from "framer-motion"
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaPython,
+  FaReact,
+  FaBootstrap,
+  FaLinux,
+  FaGitAlt,
+  FaGithub,
+  FaDocker,
+} from "react-icons/fa"
+import { SiDjango, SiFlask } from "react-icons/si"
+import ProgressCircle from "./ProgressCircle"
 
-const MySkills = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
-  }, []);
+const MySkills = ({ darkMode }) => {
+  const skillsData = [
+    {
+      title: "Languages",
+      skills: [
+        { name: "HTML", icon: <FaHtml5 />, percentage: 100 },
+        { name: "CSS", icon: <FaCss3Alt />, percentage: 100 },
+        { name: "JavaScript", icon: <FaJs />, percentage: 100 },
+        { name: "Python", icon: <FaPython />, percentage: 100 },
+      ],
+    },
+    {
+      title: "Frameworks",
+      skills: [
+        { name: "React", icon: <FaReact />, percentage: 100 },
+        { name: "Bootstrap", icon: <FaBootstrap />, percentage: 100 },
+        { name: "Django", icon: <SiDjango />, percentage: 100 },
+        { name: "Flask", icon: <SiFlask />, percentage: 100 },
+      ],
+    },
+    {
+      title: "Tools",
+      skills: [
+        { name: "Linux", icon: <FaLinux />, percentage: 100 },
+        { name: "Git", icon: <FaGitAlt />, percentage: 100 },
+        { name: "GitHub", icon: <FaGithub />, percentage: 100 },
+        { name: "Docker", icon: <FaDocker />, percentage: 100 },
+      ],
+    },
+  ]
 
   return (
-    <section id="skills" className="py-16 bg-gray-100 text-center" ref={sectionRef} data-aos="fade-up">
-      <h1 className="text-4xl font-bold mb-8">My Skills</h1>
-      
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Programming Languages</h2>
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-blue-500">
-              <i className="fab fa-html5 text-4xl text-blue-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">80%</span>
-            </div>
-            <span className="mt-2">HTML</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-blue-500">
-              <i className="fab fa-css3-alt text-4xl text-blue-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">75%</span>
-            </div>
-            <span className="mt-2">CSS</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-blue-500">
-              <i className="fab fa-js text-4xl text-blue-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">85%</span>
-            </div>
-            <span className="mt-2">JavaScript</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-blue-500">
-              <i className="fab fa-python text-4xl text-blue-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">70%</span>
-            </div>
-            <span className="mt-2">Python</span>
-          </li>
-        </ul>
-      </div>
+    <motion.section
+      id="skills"
+      className={`py-16 bg-[var(--background)] text-[var(--text)] text-center`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h1
+        className="text-4xl font-bold mb-8 font-mono"
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        &lt;MySkills&gt;
+      </motion.h1>
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Frameworks</h2>
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-green-500">
-              <i className="fab fa-react text-4xl text-green-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">80%</span>
-            </div>
-            <span className="mt-2">React</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-green-500">
-              <i className="fab fa-bootstrap text-4xl text-green-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">75%</span>
-            </div>
-            <span className="mt-2">Bootstrap</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-green-500">
-              <i className="fab fa-database text-4xl text-green-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">70%</span>
-            </div>
-            <span className="mt-2">Django</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-green-500">
-              <i className="fas fa-flask text-4xl text-green-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">65%</span>
-            </div>
-            <span className="mt-2">Flask</span>
-          </li>
-        </ul>
-      </div>
+      {skillsData.map((category, index) => (
+        <motion.div
+          key={category.title}
+          className="mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+        >
+          <h2 className="text-2xl font-semibold mb-6 font-mono">{category.title} = &#123;</h2>
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {category.skills.map((skill, skillIndex) => (
+              <motion.li
+                key={skill.name}
+                className={`bg-[var(--background)] p-4 rounded-lg shadow-lg backdrop-filter backdrop-blur-sm flex flex-col items-center border border-[var(--text)]`}
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px var(--primary)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProgressCircle percentage={skill.percentage}>
+                  <div className="text-4xl text-[var(--primary)]">{skill.icon}</div>
+                </ProgressCircle>
+                <span className="mt-2 font-mono text-[var(--text)]">
+                  {skill.name}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+          <h2 className="text-2xl font-semibold mt-6 font-mono">&#125;;</h2>
+        </motion.div>
+      ))}
+      <motion.h1
+        className="text-4xl font-bold mt-8 font-mono"
+        initial={{ y: 50 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        &lt;/MySkills&gt;
+      </motion.h1>
+    </motion.section>
+  )
+}
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Tools</h2>
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-red-500">
-              <i className="fab fa-linux text-4xl text-red-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">80%</span>
-            </div>
-            <span className="mt-2">Linux</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-red-500">
-              <i className="fab fa-git-alt text-4xl text-red-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">75%</span>
-            </div>
-            <span className="mt-2">Git</span>
-          </li>
-          <li className="bg-white p-4 rounded shadow flex flex-col items-center" data-aos="fade-up">
-            <div className="relative w-24 h-24 flex items-center justify-center rounded-full border-4 border-red-500">
-              <i className="fab fa-github text-4xl text-red-500"></i>
-              <span className="absolute bottom-0 right-0 text-sm bg-white rounded-full px-2 py-1">75%</span>
-            </div>
-            <span className="mt-2">GitHub</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-  );
-};
-
-export default MySkills;
+export default MySkills
